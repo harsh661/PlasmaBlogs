@@ -31,7 +31,7 @@ const FileInput = () => {
     {postImage == '' ?<MdAddAPhoto size={25} className={darkMode?'text-light-mode-text':'text-darker'}/>:<IoMdReverseCamera size={25} className='text-red'/>}
     </label>
     <input type="file" className='hidden' id='image' onChange={handleFileInputChange} required/>
-    <img src={files} className='h-52 object-cover'/>
+    <img src={files} className='h-52 object-cover border border-dark-text'/>
   </div>
   );
 };
