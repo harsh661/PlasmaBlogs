@@ -41,7 +41,7 @@ const FileInput = () => {
         <input type="file" className='hidden' id='image' onChange={handleFileInputChange} />
     </div>
         <button onClick={uploadImage} className={`mt-5 p-1 text-white rounded-lg ${darkMode?'bg-light-mode-text':'bg-darker'}`}>Upload</button>
-        <span className='text-xs pt-1'>*Hit upload for changes to take place</span>
+        <span className={`${darkMode?'text-dark-text':'text-light-mode-text'} text-xs pt-1`}>*Hit upload for changes to take place</span>
     </div>
     );
   };
