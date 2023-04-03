@@ -29,7 +29,7 @@ const FileInput = () => {
   return (
   <div className='flex flex-col relative'>
     <label htmlFor="image" className='absolute right-2 top-2'>
-    {postImage == '' ?<MdAddAPhoto size={25} className={darkMode?'text-light-mode-text':'text-darker'}/>:<IoMdReverseCamera size={25} className='text-red'/>}
+    <IoMdReverseCamera size={25} className='text-red'/>
     </label>
     <input type="file" className='hidden' id='image' onChange={handleFileInputChange} />
     <img src={files} className='h-52 object-cover border border-dark-text'/>
@@ -59,6 +59,7 @@ const EditPost = () => {
             content,
             timestamp: serverTimestamp(),
         });
+        console.log(files)
         setRedirect(true)
     }
     const deletePost = async () => {

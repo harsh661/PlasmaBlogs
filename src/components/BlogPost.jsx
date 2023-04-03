@@ -20,7 +20,7 @@ const BlogPost = ({id, title, summary, files:cover, author, timestamp}) => {
           <img
             src={cover}
             alt="Blog iamge"
-            className={`w-full object-cover text-white flex items-center justify-center`}
+            className={`w-full h-full object-cover text-white flex items-center justify-center`}
           />
         </Link>
       </div>

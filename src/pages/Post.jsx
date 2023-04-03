@@ -28,7 +28,7 @@ const FileInput = () => {
   return (
   <div className='flex flex-col relative'>
     <label htmlFor="image" className='absolute right-2 top-2'>
-    {postImage == '' ?<MdAddAPhoto size={25} className={darkMode?'text-light-mode-text':'text-darker'}/>:<IoMdReverseCamera size={25} className='text-red'/>}
+    {postImage == '' ?<MdAddAPhoto size={25} className={`darkMode?'text-light-mode-text':'text-darker'`}/>:<IoMdReverseCamera size={25} className='text-red'/>}
     </label>
     <input type="file" className='hidden' id='image' onChange={handleFileInputChange} required/>
     <img src={files} className='h-52 object-cover border border-dark-text'/>
@@ -73,7 +73,7 @@ const Post = () => {
 
   return (
     <div className={`${darkMode ? 'bg-gradient-to-b from-dark to-darker': ''} flex justify-center min-h-body`}>
-      <div className='max-w-6xl mx-auto flex flex-col items-center p-5 w-full'>
+      <div className='max-w-xl mx-auto flex flex-col items-center p-5 w-full'>
       <h1 className={`${darkMode ? 'text-white': ''} text-3xl font-semibold text-center mt-5 mb-10`}>Create a Post:</h1>
         <form className='flex flex-col gap-5' onSubmit={createNewPost}>
           <div className='flex flex-col gap-3'>
