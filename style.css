@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+input {
+    background: none;
+}
+
+.content h1{
+    font-size: 30px;
+    padding: 20px 0;
+}
+.content h2{
+    font-size: 24px;
+    padding: 20px 0;
+}
+.content p{
+    font-size: 18px;
+    padding: 10px 0;
+}
+.content ul{
+  list-style: disc;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.content a{
+  text-decoration: underline;
+}
+.content blockquote{
+  font-family: 'Fira-Code', monospace;
+  overflow: scroll;
+  padding: 10px 20px;
+  border-left: 3px solid #fb6300;
+}
+.content p img, .content img, .content-dark p img, .content-dark img{
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.content-dark h1{
+    color: white;
+    font-size: 30px;
+    padding: 20px 0;
+}
+.content-dark h2{
+    color: white;
+    font-size: 24px;
+    padding: 20px 0;
+}
+.content-dark p{
+    color: #94A3B8;    
+    font-size: 18px;
+    padding: 20px 0;
+}
+.content-dark ul{
+  list-style: disc;
+  font-size: 18px;
+  color: #94A3B8;
+  padding-left: 10px;
+}
+.content-dark a{
+  text-decoration: underline;
+  color: white;
+}
+.content-dark blockquote{
+  font-family: 'Fira-Code', monospace;
+  overflow: scroll;
+  background: black;
+  padding: 10px 20px;
+  border-left: 3px solid #fb6300;
+  color: white;
+}
+
+/* Loader CSS */
+
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+
+  blockquote::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  blockquote {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .ql-container {
+    height: unset;
+  }

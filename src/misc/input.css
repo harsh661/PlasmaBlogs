@@ -1,0 +1,8 @@
+.uploader__container{width:fit-content; position: absolute; bottom: 0}
+.uploader__placeholder{position:relative;overflow:hidden;min-height:30px;min-width:30px}
+.uploader__btn_wrapper{height: 30px;display:flex;align-items:center;justify-content:center;padding:0;z-index:1}
+.uploader__btn{background:transparent;border:none;cursor:pointer}
+.uploader__file_input_label{position:absolute;top:50%;left:50%;z-index:1;transform:translate(-50%,-50%)}
+.uploader__file_input_label:hover{cursor:pointer}
+input.uploader__file_input{position:absolute;height:.1px;width:.1px;opacity:0;top:0;left:0;right:0;bottom:0;z-index:-1}
+img.uploader__file{display: none;}
