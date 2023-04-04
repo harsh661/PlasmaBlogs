@@ -94,11 +94,11 @@ const Navbar = () => {
                 </div>
                 :
                 <div className='flex flex-col h-full text-xl gap-5 justify-between'>
-                  <div className={`flex items-center text-base gap-3 ${darkMode ? 'text-dark-text text-xl': 'text-black text-xl'}`}>
+                  <div className={`flex items-center gap-3 ${darkMode ? 'text-dark-text text-xl': 'text-black text-xl'}`}>
                     <span><FaRegUserCircle size={30}/></span>
-                    <p>You are not Signed in</p>
+                    <p>Not signed in</p>
                   </div>
-                  <Link to='/login' onClick={()=>setNavOpen(prev => !prev)} className={`cursor-pointer flex items-center gap-5 text-blue pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
+                  <Link to='/login' onClick={()=>setNavOpen(prev => !prev)} className={`cursor-pointer flex items-center gap-5 text-accent pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
                       <div><MdLogin size={30}/></div>
                       Login
                   </Link>

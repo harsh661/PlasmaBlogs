@@ -1,8 +1,10 @@
 import React, {useContext, useEffect} from 'react'
 import Blog from '../components/Blog'
+import Footer from '../components/Footer'
 import { UserContext } from '../UserContext'
 import {AiOutlineTwitter, AiOutlineInstagram, AiFillLinkedin, AiFillGithub} from 'react-icons/ai'
 import { auth } from '../firebase'
+import Categories from '../components/Categories'
 
 
 const Home = () => {
@@ -13,8 +15,13 @@ const Home = () => {
       setUserInfo(state)
     })
   }, [userInfo])
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   
   return (
+    <>
     <div className={`${darkMode ? 'bg-dark': ''} flex flex-col items-center min-h-body pb-20`}>
       <div className='flex flex-col gap-5 items-center p-5'>
         <h2 className={`${darkMode && 'text-white'} text-3xl`}>Plasma Blogs</h2>
@@ -25,8 +32,11 @@ const Home = () => {
           <a target='_blank' href='https://instagram.com/harsh.script'><AiOutlineInstagram/></a>
         </div>
       </div>
+      <Categories />
       <Blog />
     </div>
+    <Footer />
+    </>
   )
 }
 

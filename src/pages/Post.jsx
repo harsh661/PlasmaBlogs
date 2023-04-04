@@ -7,6 +7,7 @@ import Editor from '../components/Editor'
 import { UserContext } from '../UserContext';
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"; 
 import { db } from '../firebase';
+import Categories from '../components/Categories';
 
 const FileInput = () => {
   const [file, setFile] = useState(null)
@@ -39,9 +40,10 @@ const FileInput = () => {
 const Post = () => {
   const [title, setTitle] = useState('')
   const [summary, setSummary] = useState('')
+  const [category, setCategory] = useState('')
   const [content, setContent] = useState('')
   const [redirect, setRedirect] = useState(false)
-  const {darkMode, userInfo, postImage} = useContext(UserContext)
+  const {darkMode, userInfo, postImage, categories} = useContext(UserContext)
   const files = postImage == '' ? '' : postImage
 
   const createNewPost = async(e) => {
@@ -54,6 +56,7 @@ const Post = () => {
     await setDoc(doc(db, 'posts', _id), {
         title,
         summary,
+        category,
         files,
         content,
         author: {
@@ -101,6 +104,14 @@ const Post = () => {
             value={summary}
             onChange={(e)=>setSummary(e.target.value)}
           />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Select a category:</h2>
+            <select name="category" id="category" onChange={(e) => setCategory(e.target.value)}  className={`${darkMode?'bg-dark-text':''} flex p-2 outline-none appearance-none`}>
+              {categories.map((term) => (
+                <option value={term}>{term}</option>
+              ))}
+            </select> 
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Add a cover image:</h2>

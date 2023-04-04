@@ -6,9 +6,26 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
 }
 input {
     background: none;
+}
+
+#categories {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#categories::-webkit-scrollbar {
+  display: none;
+}
+.container input:checked ~ .checkmark {
+  background-color: #2196F3 !important;
+  color: black;
+}
+
+input {
+  outline: none;
 }
 
 .content h1{

@@ -39,11 +39,12 @@ const FileInput = () => {
 
 const EditPost = () => {
     
-    const {darkMode, info, postImage} = useContext(UserContext)
+    const {darkMode, info, postImage, categories} = useContext(UserContext)
     const navigate = useNavigate()
     const {id} = useParams()
     const [title, setTitle] = useState(info.title)
     const [summary, setSummary] = useState(info.summary)
+    const [category, setCategory] = useState(info.category)
     const [content, setContent] = useState(info.content)
     const [redirect, setRedirect] = useState(false)
     const files = postImage == '' ? info.files : postImage
@@ -55,6 +56,7 @@ const EditPost = () => {
         updateDoc(docRef, {
             title,
             summary,
+            category,
             files,
             content,
             timestamp: serverTimestamp(),
@@ -103,6 +105,14 @@ if(redirect) {
             size={1}
             onChange={(e)=>setSummary(e.target.value)}
           />
+          </div>
+          <div className='flex flex-col gap-3'>
+            <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Select a category:</h2>
+            <select name="category" id="category" value={category == ''?info.category:category} onChange={(e) => setCategory(e.target.value)}  className={`${darkMode?'bg-dark-text':''} flex p-2 outline-none appearance-none`}>
+              {categories.map((term) => (
+                <option value={term}>{term}</option>
+              ))}
+            </select> 
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Add a cover image:</h2>

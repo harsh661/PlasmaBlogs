@@ -12,9 +12,10 @@ export const UserContext = createContext({})
     const [url, setUrl] = useState("")
     const [postImage, setPostImage] = useState('')
     const [newpostImage, setnewPostImage] = useState('')
+    const categories = ['Web Development', 'Linux', 'AI & ML', 'JavaScript', 'HTML5', 'CSS3', 'React', 'Windows', 'Programming']
 
     return (
-        <UserContext.Provider value={{newpostImage, setnewPostImage, postImage, setPostImage, url, setUrl, userInfo, setUserInfo, darkMode, setDarkMode, posts, setPosts, info, setInfo}}>
+        <UserContext.Provider value={{categories, newpostImage, setnewPostImage, postImage, setPostImage, url, setUrl, userInfo, setUserInfo, darkMode, setDarkMode, posts, setPosts, info, setInfo}}>
             {children}
         </UserContext.Provider>
     )
