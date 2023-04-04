@@ -27,7 +27,7 @@ const Categories = () => {
 
   return (
     <div id='categories' className='w-full py-2 overflow-x-scroll'>
-        <div className={`flex items-center md:max-w-5xl p-2 gap-3 mx-auto`}>
+        <div className={`flex items-center md:max-w-[984px] overflow-scroll p-2 gap-3 mx-auto`}>
                 <label className="container">
                     <input
                     type="radio" 
@@ -35,7 +35,7 @@ const Categories = () => {
                     name='radio' 
                     className={`hidden`}
                     />
-                    <span className={`checkmark whitespace-nowrap py-2 px-3 rounded-full ${darkMode?'bg-light text-dark-text': 'bg-light-mode'}`}>All</span>
+                    <span className={`checkmark whitespace-nowrap py-2 px-5 rounded-full ${darkMode?'bg-light text-dark-text': 'bg-light-mode'}`}>All</span>
                 </label>
                 {categories.map((category, i) => (
                 <label key={i} className="container w-full h-full">

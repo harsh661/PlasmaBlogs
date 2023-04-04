@@ -1,18 +1,17 @@
-import React, { useContext, useEffect, useState} from 'react'
+import React, { useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../UserContext'
 import {IoMdAdd} from 'react-icons/io'
-import {MdLightMode, MdNightlightRound, MdClose, MdLogout, MdLogin} from 'react-icons/md'
+import {MdLightMode, MdNightlightRound, MdClose, MdLogout, MdLogin, MdOutlineFeed} from 'react-icons/md'
 import {FaRegUserCircle} from'react-icons/fa'
-import {HiOutlineMenuAlt1, HiOutlineMoon} from 'react-icons/hi'
+import {HiOutlineMenuAlt1, HiOutlineMoon, HiOutlineBookmark} from 'react-icons/hi'
 import {AiOutlineTwitter, AiOutlineInstagram, AiFillLinkedin, AiFillGithub} from 'react-icons/ai'
-import {BiEditAlt} from 'react-icons/bi'
 import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false)
 
-  const {setUserInfo, userInfo, darkMode, setDarkMode,} = useContext(UserContext)
+  const {userInfo, darkMode, setDarkMode,} = useContext(UserContext)
 
   const logout = () => {
     // log out user
@@ -26,7 +25,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`${darkMode ? 'bg-dark': 'bg-white shadow-md'} z-10 px-5 flex items-center justify-center sticky top-0`}>
+    <nav className={`${darkMode ? 'bg-dark': 'bg-white'} z-10 px-5 flex items-center justify-center sticky top-0`}>
       <div className='h-[60px] md:relative w-full flex items-center justify-between max-w-6xl'>
         <Link to='/' className='hidden md:flex'>
           <img className='w-24' src={darkMode ? '/logo-dark.png' : '/logo.png'} alt="" />
@@ -72,20 +71,23 @@ const Navbar = () => {
           } 
         </div>
         { (navOpen) && (
-          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border shadow-md'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 h-screen md:h-auto md:justify-between md:items-center md:rounded-lg md:absolute`}>
+          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border-2'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 h-screen md:h-auto md:justify-between md:items-center md:rounded-lg md:absolute`}>
               {userInfo ? 
-                <div className='text-dark-text h-full text-lg gap-5 flex flex-col justify-between'>
-                  <div className={`flex items-center text-lg gap-5 ${darkMode ? 'text-dark-text': 'text-black'}`}>
-                    <div className='md:hidden'>
+                <div className='text-dark-text h-full text-lg gap-5 flex flex-col justify-between w-80'>
+                  <div className={`flex md:flex-col items-center text-lg gap-5 md:gap-2 ${darkMode ? 'text-white': 'text-black'}`}>
+                    <div>
                       {userInfo
-                        ?<img src={userInfo?.photoURL} className='w-102 h-10 rounded-full object-cover'/>
+                        ?<Link to={`/details/${userInfo?.displayName}`} onClick={()=>setNavOpen(false)}>
+                            <img src={userInfo?.photoURL} className='w-12 md:w-16 rounded-full object-cover border border-light-mode-text'/>
+                          </Link>
                         :<FaRegUserCircle size={25}/>
                       }
                     </div>
                     {userInfo?.displayName}
-                    {userInfo && <Link to={`/details/${userInfo?.displayName}`} onClick={()=>setNavOpen(false)}>
-                        <BiEditAlt size={25}/>
-                      </Link>}
+                  </div>
+                  <div className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} h-full flex flex-col pl-5 md:pl-2 pt-10 md:pt-0 gap-5`}>
+                      <span className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><MdOutlineFeed/>Your Posts</span>
+                      <span className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><HiOutlineBookmark/>Bookmarks</span>
                   </div>
                   <div onClick={logout} className={`cursor-pointer flex items-center gap-5 text-red pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
                     <div><MdLogout size={25}/></div>

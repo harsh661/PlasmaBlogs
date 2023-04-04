@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react'
 import Editor from '../components/Editor'
 import {useParams, Navigate, useNavigate} from 'react-router-dom'
-import {MdAddAPhoto} from 'react-icons/md'
 import {IoMdReverseCamera} from 'react-icons/io';
 import { UserContext } from '../UserContext'
 import Loader from '../components/Loader'

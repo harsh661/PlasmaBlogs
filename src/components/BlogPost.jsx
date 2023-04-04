@@ -32,7 +32,7 @@ const BlogPost = ({id, title, summary, files:cover, author, timestamp}) => {
             {title}
           </h1>
         </Link>
-        <span className={`flex flex-wrap gap-2 items-center ${darkMode ? 'text-dark-text': 'text-black'}`}>
+        <span className={`flex flex-wrap gap-2 items-center font-semibold ${darkMode ? 'text-dark-text': 'text-black'}`}>
             <span>{`By ${author.userName}`}</span>
             <div className={`h-3/4 w-[2px] ${darkMode?'bg-dark-text':'bg-black'}`}></div>
             {date}
@@ -42,7 +42,6 @@ const BlogPost = ({id, title, summary, files:cover, author, timestamp}) => {
         >
           {summary}
         </p>
-        <Link to={`/post/${title}`} className="hidden cursor-pointer md:group-hover:flex bg-accent absolute p-2  bottom-0 right-0 m-3 animate-bounce text-white rounded-lg">Read More</Link>
       </div>
     </div>
   );

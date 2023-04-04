@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     overflow-x: hidden;
 }
 input {
     background: none;
 }
 
-#categories {
+* {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
-#categories::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 .container input:checked ~ .checkmark {
@@ -30,11 +30,11 @@ input {
 
 .content h1{
     font-size: 30px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .content h2{
     font-size: 24px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .content p{
     font-size: 18px;
@@ -63,17 +63,17 @@ input {
 .content-dark h1{
     color: white;
     font-size: 30px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .content-dark h2{
     color: white;
     font-size: 24px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .content-dark p{
     color: #94A3B8;    
     font-size: 18px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 .content-dark ul{
   list-style: disc;

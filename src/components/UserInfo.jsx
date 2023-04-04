@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react'
 import {MdAddAPhoto} from 'react-icons/md'
-import {IoMdReverseCamera} from 'react-icons/io'
+import {IoMdReverseCamera, IoMdAddCircle, IoMdRemoveCircle} from 'react-icons/io'
 import {BiArrowBack} from 'react-icons/bi'
 import { UserContext } from '../UserContext';
 import { updateProfile } from "firebase/auth";
@@ -36,7 +36,7 @@ const FileInput = () => {
     <div className='w-28 h-28 rounded-full outline-none relative'>
         <img src={url !== ''? url : userInfo?.photoURL} className='w-full h-full rounded-full object-cover'/>
         <label htmlFor="image" className='absolute right-0 bottom-2'>
-            {url =='' ? <MdAddAPhoto size={25} className='text-green-600'/>:<IoMdReverseCamera size={25} className='text-red'/>}
+            {url =='' ? <IoMdAddCircle size={25} className={`${darkMode?'bg-darker':'bg-white'} text-accent rounded-full`}/>:<IoMdRemoveCircle size={25} className={`${darkMode?'bg-darker':'bg-white'} text-red rounded-full`}/>}
         </label>
         <input type="file" className='hidden' id='image' onChange={handleFileInputChange} />
     </div>
@@ -73,7 +73,7 @@ const UserInfo = () => {
                 <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} md:hidden flex items-center gap-2 text-xl hover:underline underline-offset-4 pt-5 -translate-x-5`}>
                   <BiArrowBack/> Back to Home
                 </Link>
-                <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl font-bold text-center mt-10 mb-5`}>Welcome to PlasmaBlogs</h1>
+                <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl font-bold text-center mt-10 mb-5`}>Create Your Profile</h1>
                 <form onSubmit={updateUser} className='flex flex-col sm:px-16 px-10 pb-5 pt-5 flex-1 w-full justify-between'>
                     <div className='flex flex-col gap-5 items-center justify-center'>
                         <FileInput />
