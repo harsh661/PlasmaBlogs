@@ -6,7 +6,9 @@
 
 body {
     font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+}
+.fix {
+  overflow: hidden;
 }
 input {
     background: none;
@@ -22,6 +24,10 @@ input {
 .container input:checked ~ .checkmark {
   background-color: #2196F3 !important;
   color: black;
+}
+.responsive-h {
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 input {

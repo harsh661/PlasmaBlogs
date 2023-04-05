@@ -59,6 +59,7 @@ const Post = () => {
         category,
         files,
         content,
+        uid: userInfo.uid,
         author: {
           userName: userInfo.displayName,
           email: userInfo.email,

@@ -8,6 +8,7 @@ import Post from "./pages/Post";
 import BlogPage from "./pages/BlogPage";
 import EditPost from "./pages/EditPost";
 import UserInfo from "./components/UserInfo";
+import UserPosts from "./pages/UserPosts";
 
 
 const Layout = () => {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <UserInfo />
+      },
+      {
+        path: "/:id/posts",
+        element: <UserPosts />
       },
     ] },
 ]);

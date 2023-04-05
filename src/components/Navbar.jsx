@@ -23,6 +23,11 @@ const Navbar = () => {
         // An error happened.
       });
   }
+  if(navOpen){
+    document.body.classList.add('fix')
+  } else {
+    document.body.classList.remove('fix')
+  }
 
   return (
     <nav className={`${darkMode ? 'bg-dark': 'bg-white'} z-10 px-5 flex items-center justify-center sticky top-0`}>
@@ -53,7 +58,7 @@ const Navbar = () => {
                 <IoMdAdd size={30}/>
               </Link>
               <div onClick={()=>setNavOpen(prev => !prev)} className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} hidden md:flex`}>
-                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full'/>
+                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
               </div>
               </>
             :
@@ -71,14 +76,14 @@ const Navbar = () => {
           } 
         </div>
         { (navOpen) && (
-          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border-2'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 h-screen md:h-auto md:justify-between md:items-center md:rounded-lg md:absolute`}>
+          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border-2'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 responsive-h md:min-h-fit md:justify-between md:items-center md:rounded-lg md:absolute`}>
               {userInfo ? 
-                <div className='text-dark-text h-full text-lg gap-5 flex flex-col justify-between w-80'>
+                <div className='text-dark-text h-full max-w-full text-lg gap-5 flex flex-col justify-between w-80'>
                   <div className={`flex md:flex-col items-center text-lg gap-5 md:gap-2 ${darkMode ? 'text-white': 'text-black'}`}>
                     <div>
                       {userInfo
                         ?<Link to={`/details/${userInfo?.displayName}`} onClick={()=>setNavOpen(false)}>
-                            <img src={userInfo?.photoURL} className='w-12 md:w-16 rounded-full object-cover border border-light-mode-text'/>
+                            <img src={userInfo?.photoURL} className='w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border border-light-mode-text'/>
                           </Link>
                         :<FaRegUserCircle size={25}/>
                       }
@@ -86,7 +91,7 @@ const Navbar = () => {
                     {userInfo?.displayName}
                   </div>
                   <div className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} h-full flex flex-col pl-5 md:pl-2 pt-10 md:pt-0 gap-5`}>
-                      <span className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><MdOutlineFeed/>Your Posts</span>
+                      <Link onClick={() => setNavOpen(false)} to={`/${userInfo.displayName}/posts`} className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><MdOutlineFeed/>Your Posts</Link>
                       <span className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><HiOutlineBookmark/>Bookmarks</span>
                   </div>
                   <div onClick={logout} className={`cursor-pointer flex items-center gap-5 text-red pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
