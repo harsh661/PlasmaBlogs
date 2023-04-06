@@ -6,22 +6,12 @@ import { UserContext } from '../UserContext';
 import Loader from '../components/Loader';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
+import { auth } from '../firebase';
 import Comments from '../components/Comments'
 
 const BlogPage = () => {
-
   const {id} = useParams()
-  const {userInfo, darkMode, info, setInfo} = useContext(UserContext)
-
-  // const getLikesComments = async () => {
-  //   const docRef = doc(db, userInfo?.email, info?.id);
-  //   const docSnap = await getDoc(docRef);
-  //   if (docSnap.exists()) {
-  //     setIsLiked(true)
-  //   } else {
-  //     console.log("No such document!");
-  //   }
-  // }
+  const {userInfo,setUserInfo, darkMode, info, setInfo} = useContext(UserContext)
 
   const getData = async () => {
     const docRef = doc(db, "posts", id);
@@ -29,11 +19,9 @@ const BlogPage = () => {
 
     if (docSnap.exists()) {
       setInfo(docSnap.data());
-      setCommentNum(docSnap.data()?.comments?.length)
     } else {
       console.log("No such document!");
     }
-    getLikesComments()
   }
 
   const showComment = (e) => {
@@ -44,6 +32,11 @@ const BlogPage = () => {
         behavior: "smooth" }
     )
   };
+  useEffect(() => {
+    auth.onAuthStateChanged(state => {
+      setUserInfo(state)
+    })
+  }, [userInfo])
 
   useEffect(() => {
     setInfo(null)

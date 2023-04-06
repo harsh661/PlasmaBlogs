@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
+import {createHashRouter, Outlet, RouterProvider} from "react-router-dom";
 import { UserContextProvider } from "./UserContext";
 import Home from "./pages/Home";
 import Navbar from './components/Navbar';
@@ -19,7 +19,7 @@ const Layout = () => {
     </UserContextProvider>
 )}
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Layout />,
