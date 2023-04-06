@@ -9,9 +9,7 @@ import {AiOutlineTwitter, AiOutlineInstagram, AiFillLinkedin, AiFillGithub} from
 import { getAuth, signOut } from "firebase/auth";
 
 const Navbar = () => {
-  const [navOpen, setNavOpen] = useState(false)
-
-  const {userInfo, darkMode, setDarkMode,} = useContext(UserContext)
+  const {userInfo, darkMode, setDarkMode, navOpen, setNavOpen} = useContext(UserContext)
 
   const logout = () => {
     // log out user
@@ -30,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`${darkMode ? 'bg-dark': 'bg-white'} z-10 px-5 flex items-center justify-center sticky top-0`}>
+    <nav className={`${darkMode ? 'bg-dark': 'bg-white'} z-50 px-5 flex items-center justify-center sticky top-0`}>
       <div className='h-[60px] md:relative w-full flex items-center justify-between max-w-6xl'>
         <Link to='/' className='hidden md:flex'>
           <img className='w-24' src={darkMode ? '/logo-dark.png' : '/logo.png'} alt="" />

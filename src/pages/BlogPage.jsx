@@ -1,30 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import {BsCalendar, BsPerson} from 'react-icons/bs'
-import {AiOutlineHeart, AiFillHeart} from 'react-icons/ai'
-import {BiEditAlt, BiArrowBack, BiMessageSquare, BiArrowToTop} from 'react-icons/bi'
+import {BiEditAlt, BiArrowBack, BiCommentDetail} from 'react-icons/bi'
 import { UserContext } from '../UserContext';
 import Loader from '../components/Loader';
-import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import Comments from '../components/Comments'
 
 const BlogPage = () => {
 
   const {id} = useParams()
-  const {userInfo, darkMode, info, setInfo, commentNum, setCommentNum,} = useContext(UserContext)
-  const [isLiked, setIsLiked] = useState(false)
-  const [likesNum, setLikesNum] = useState() 
+  const {userInfo, darkMode, info, setInfo} = useContext(UserContext)
 
-  const getLikesComments = async () => {
-    const docRef = doc(db, userInfo?.email, info?.id);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setIsLiked(true)
-    } else {
-      console.log("No such document!");
-    }
-  }
+  // const getLikesComments = async () => {
+  //   const docRef = doc(db, userInfo?.email, info?.id);
+  //   const docSnap = await getDoc(docRef);
+  //   if (docSnap.exists()) {
+  //     setIsLiked(true)
+  //   } else {
+  //     console.log("No such document!");
+  //   }
+  // }
 
   const getData = async () => {
     const docRef = doc(db, "posts", id);
@@ -33,21 +30,10 @@ const BlogPage = () => {
     if (docSnap.exists()) {
       setInfo(docSnap.data());
       setCommentNum(docSnap.data()?.comments?.length)
-      setLikesNum(docSnap.data()?.likes)
     } else {
       console.log("No such document!");
     }
     getLikesComments()
-  }
-
-  const addlike = async () => {
-    setLikesNum(prev => prev + 1)
-    const addedLikes = likesNum + 1
-    const docRef = doc(db, 'posts', info.id);
-    updateDoc(docRef, {
-        likes: addedLikes,
-    });
-    setIsLiked(true)
   }
 
   const showComment = (e) => {
@@ -58,13 +44,6 @@ const BlogPage = () => {
         behavior: "smooth" }
     )
   };
-
-  const goTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-  }
 
   useEffect(() => {
     setInfo(null)
@@ -77,17 +56,9 @@ const BlogPage = () => {
   return (
     <div className={`${darkMode ? 'bg-dark': ''} min-h-body`}>
       <div className='flex flex-col md:flex-row max-w-4xl mx-auto'>
-        <div className={`${darkMode?'bg-card text-dark-text md:bg-transparent':'bg-white text-light-mode-text md:bg-transparent'} md:sticky fixed w-full md:w-auto md:top-40 bottom-0 flex md:flex-col gap-10 md:gap-5 h-max items-center justify-center z-50 pt-1 p-5`}>
-          <div className='flex flex-col md:hidden absolute left-5 cursor-pointer' onClick={goTop}>
-            <BiArrowToTop size={30}/>          
-          </div>
-          <span className='flex flex-col items-center cursor-pointer'>
-            {isLiked? <AiFillHeart className='text-red' size={27}/>: <AiOutlineHeart size={27} onClick={addlike}/>}
-            {likesNum}         
-          </span>
-          <span className='flex flex-col items-center cursor-pointer'>
-            <BiMessageSquare size={25} onClick={showComment}/>
-            {info?.comments?commentNum:0}
+        <div onClick={showComment} className=''>
+          <span className='flex flex-col items-center cursor-pointer text-white bg-accent z-10 rounded-full fixed right-5 p-4 bottom-5'>
+            <BiCommentDetail size={25}/>
           </span>
         </div>
         <div id='main' className="flex flex-col items-center p-5 animate-slideUp relative">
@@ -128,7 +99,7 @@ const BlogPage = () => {
               <Comments/>
             </div>
         </div>
-        <div className='md:hidden'>
+        <div className='md:hidden z-20'>
           <Comments/>
         </div>
       </div>
