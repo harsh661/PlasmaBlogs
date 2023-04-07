@@ -1,5 +1,4 @@
 import React, {useContext, useState} from 'react'
-import {Link} from 'react-router-dom'
 import { Navigate } from 'react-router-dom';
 import { UserContext } from '../UserContext';
 import { GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth"
@@ -8,17 +7,9 @@ import {FiGithub} from 'react-icons/fi'
 import {FcGoogle} from 'react-icons/fc'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const [redirect, setRedirect] = useState(false);
   const [err, setErr] = useState(false)
-  const [userErr, setUserErr] = useState(false)
-  const [show, setShow] = useState(true)
   const {setUserInfo, darkMode} = useContext(UserContext)
-
-  function handleShow() {
-    setShow(prevShow => !prevShow)
-  }
 
   const loginWithGoogle = async (e) => {
     const provider = new GoogleAuthProvider()
@@ -31,8 +22,8 @@ const Login = () => {
       setUserInfo(user)
       setRedirect(true)
     }).catch((error) => {
+      setErr(true)
       const errorCode = error.code;
-      console.log(error)
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
