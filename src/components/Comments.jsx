@@ -4,7 +4,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from '../firebase';
 
 const Comments = () => {
-  const {darkMode, userInfo, info, setCommentNum} = useContext(UserContext)
+  const {darkMode, userInfo, info} = useContext(UserContext)
   const [comment, setComment] = useState(info?.comments)
   const [input, setInput] = useState('')
 
@@ -20,7 +20,6 @@ const Comments = () => {
         comments: comment
     });
     setInput('')
-    setCommentNum(info?.comments?.length)
    }
 
   return (

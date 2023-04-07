@@ -6,7 +6,6 @@ import {AiOutlineTwitter, AiOutlineInstagram, AiFillLinkedin, AiFillGithub} from
 import { auth } from '../firebase'
 import Categories from '../components/Categories'
 
-
 const Home = () => {
   const {darkMode, userInfo, setUserInfo} = useContext(UserContext)
 

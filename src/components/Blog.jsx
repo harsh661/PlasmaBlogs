@@ -2,17 +2,23 @@ import React, {useContext, useEffect } from 'react'
 import { UserContext } from '../UserContext'
 import BlogPost from './BlogPost'
 import Loader from './Loader'
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from '../firebase';
+
 
 const Blog = () => {
 
   const {darkMode, setPosts, posts} = useContext(UserContext)
 
   const getPosts = async () => {
-    const postReference = await getDocs(collection(db, "posts"))
-    const postData = postReference.docs.map(doc => doc.data())
-    setPosts(postData)
+    let data = []
+    const q = query(collection(db, "posts"), orderBy('timestamp', 'asc'))
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+    data.unshift(doc.data());
+    })
+    setPosts(data)
   }
 
   useEffect(() => {

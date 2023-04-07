@@ -60,8 +60,7 @@ const Post = () => {
         files,
         content,
         uid: userInfo.uid,
-        comments: 0,
-        likes: 0,
+        comments: [],
         author: {
           userName: userInfo.displayName,
           email: userInfo.email,
