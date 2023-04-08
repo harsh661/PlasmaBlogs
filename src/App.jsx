@@ -3,7 +3,6 @@ import { UserContextProvider } from "./UserContext";
 import Home from "./pages/Home";
 import Navbar from './components/Navbar';
 import Login from './pages/Login'
-import Register from './pages/Register'
 import Post from "./pages/Post";
 import BlogPage from "./pages/BlogPage";
 import EditPost from "./pages/EditPost";
@@ -31,10 +30,6 @@ const router = createHashRouter([
       {
         path: "/login",
         element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
       },
       {
         path: "/create",
