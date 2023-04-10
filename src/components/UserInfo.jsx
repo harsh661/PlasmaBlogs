@@ -70,10 +70,10 @@ const UserInfo = () => {
     return (
         <div className={`${darkMode ? 'bg-dark': 'sm:bg-light-mode'} min-h-body w-screen flex items-center justify-center`}>
             <div className={`${darkMode ? 'bg-darker':'bg-white'} sm:rounded-xl shadow-form flex flex-col items-center pb-5 sm:pb-10 sm:w-[500px] w-full sm:min-h-max min-h-body`}>
-                <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} md:hidden flex items-center gap-2 text-xl hover:underline underline-offset-4 pt-5 -translate-x-5`}>
+                <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex items-center gap-2 text-xl hover:underline underline-offset-4 pb-5`}>
                   <BiArrowBack/> Back to Home
                 </Link>
-                <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl font-bold text-center mt-10 mb-5`}>Create Your Profile</h1>
+                <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl font-bold text-center mt-10 mb-5`}>Edit Your Profile</h1>
                 <form onSubmit={updateUser} className='flex flex-col sm:px-16 px-10 pb-5 pt-5 flex-1 w-full justify-between'>
                     <div className='flex flex-col gap-5 items-center justify-center'>
                         <FileInput />

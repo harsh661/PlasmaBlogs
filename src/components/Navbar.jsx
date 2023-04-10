@@ -52,12 +52,9 @@ const Navbar = () => {
                 {!darkMode && <HiOutlineMoon size={25}/>}
 
               </button>
-              <Link to='/create' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex items-center`}>
-                <IoMdAdd size={30}/>
-              </Link>
-              <div onClick={()=>setNavOpen(prev => !prev)} className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} hidden md:flex`}>
+              <Link to={`/details/${userInfo?.displayName}`}>
                 <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
-              </div>
+              </Link>
               </>
             :
             <>

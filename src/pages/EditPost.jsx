@@ -1,7 +1,8 @@
 import React, {useContext, useState} from 'react'
 import Editor from '../components/Editor'
-import {useParams, Navigate, useNavigate} from 'react-router-dom'
+import {useParams, Navigate, useNavigate, Link} from 'react-router-dom'
 import {IoMdReverseCamera} from 'react-icons/io';
+import { BiArrowBack } from 'react-icons/bi';
 import { UserContext } from '../UserContext'
 import Loader from '../components/Loader'
 import { updateDoc, serverTimestamp, deleteDoc } from "firebase/firestore";
@@ -77,6 +78,9 @@ if(redirect) {
   return (
     <div className={`${darkMode ? 'bg-gradient-to-b from-dark to-darker': ''} flex justify-center min-h-body`}>
       <div className='max-w-xl mx-auto flex flex-col items-center p-5 w-full'>
+      <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex items-center gap-2 text-xl hover:underline underline-offset-4 pb-5`}>
+        <BiArrowBack/> Back to Home
+      </Link>
       <h1 className={`${darkMode ? 'text-white': ''} text-3xl font-semibold text-center mt-5 mb-10`}>Edit your Post:</h1>
         <form className='flex flex-col gap-5' onSubmit={updatePost}>
           <div className='flex flex-col gap-3'>

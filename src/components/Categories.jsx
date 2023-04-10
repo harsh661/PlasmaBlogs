@@ -1,16 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { UserContext } from '../UserContext'
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 
 const Categories = () => {
-  const {darkMode, setPosts, categories} = useContext(UserContext)
+  const {darkMode, setPosts, posts, categories} = useContext(UserContext)
+  const [backup, setBackup] = useState(posts)
   const [all, setAll] = useState(true)
   const data = []
 
   const getCategoryData = async (e) => {
     setAll(false)
-    const q = query(collection(db, "posts"), where("category", "==", e.target.value))
+    const q = query(collection(db, "posts"), where("category", "==", e.target.value), orderBy('timestamp', 'asc'))
 
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {
@@ -20,14 +21,12 @@ const Categories = () => {
   }
   const getAllPosts = async () => {
     setAll(true)
-    const postReference = await getDocs(collection(db, "posts"))
-    const postData = postReference.docs.map(doc => doc.data())
-    setPosts(postData)
+    setPosts(backup)
   }
 
   return (
     <div id='categories' className='w-full py-2 overflow-x-scroll'>
-        <div className={`flex items-center md:max-w-[984px] overflow-scroll p-2 gap-3 mx-auto`}>
+        <div className={`flex items-center md:max-w-[984px] overflow-scroll p-2 gap-3 lg:mx-auto mx-5`}>
                 <label className="container">
                     <input
                     type="radio" 

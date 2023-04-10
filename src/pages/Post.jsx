@@ -2,12 +2,12 @@ import React, { useState, useContext } from 'react'
 import { v4 as uuid } from 'uuid';
 import {MdAddAPhoto, MdRemoveCircle} from 'react-icons/md'
 import {IoMdReverseCamera} from 'react-icons/io';
-import { Navigate } from 'react-router-dom';
+import { BiArrowBack } from 'react-icons/bi';
+import { Navigate, Link } from 'react-router-dom';
 import Editor from '../components/Editor'
 import { UserContext } from '../UserContext';
 import { doc, setDoc, serverTimestamp } from "firebase/firestore"; 
 import { db } from '../firebase';
-import Categories from '../components/Categories';
 
 const FileInput = () => {
   const [file, setFile] = useState(null)
@@ -67,7 +67,7 @@ const Post = () => {
           profile: userInfo.photoURL,
         },
         id:_id,
-        timestamp: serverTimestamp(),
+      timestamp: serverTimestamp()
     });
     setRedirect(true)
   }
@@ -79,6 +79,9 @@ const Post = () => {
   return (
     <div className={`${darkMode ? 'bg-gradient-to-b from-dark to-darker': ''} flex justify-center min-h-body`}>
       <div className='max-w-xl mx-auto flex flex-col items-center p-5 w-full'>
+      <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex items-center gap-2 text-xl hover:underline underline-offset-4 pb-5`}>
+        <BiArrowBack/> Back to Home
+      </Link>
       <h1 className={`${darkMode ? 'text-white': ''} text-3xl font-semibold text-center mt-5 mb-10`}>Create a Post:</h1>
         <form className='flex flex-col gap-5' onSubmit={createNewPost}>
           <div className='flex flex-col gap-3'>
@@ -96,7 +99,7 @@ const Post = () => {
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Write a summary:</h2>
-            <input 
+            <textarea 
             className={`${darkMode ? 'text-white': ''} border border-dark-text p-2 bg-transparent h resize-none h-24`}
             type="text"
             required 
@@ -109,14 +112,14 @@ const Post = () => {
           </div>
           <div className='flex flex-col gap-3'>
             <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Select a category:</h2>
-            <select name="category" id="category" onChange={(e) => setCategory(e.target.value)}  className={`${darkMode?'bg-dark-text':''} flex p-2 outline-none appearance-none`}>
+            <select name="category" id="category" onChange={(e) => setCategory(e.target.value)} required  className={`${darkMode?'bg-dark-text':''} flex p-2 outline-none appearance-none`}>
               {categories.map((term) => (
                 <option value={term}>{term}</option>
               ))}
             </select> 
           </div>
-          <div className='flex flex-col gap-3'>
-            <h2 className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} text-2xl`}>Add a cover image:</h2>
+          <div className={`flex flex-col gap-3 ${darkMode ? 'text-dark-text': 'text-light-mode-text'}`}>
+            <h2 className={`text-2xl`}>Add a cover image:</h2>
             <FileInput />
           </div>
 
