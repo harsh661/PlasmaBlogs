@@ -8,6 +8,7 @@ export const UserContext = createContext({})
     const [userInfo, setUserInfo] = useState(null)
     const [darkMode, setDarkMode] = useState(false)
     const [posts, setPosts] = useState(null)
+    const [backup, setBackup] = useState(null)
     const [info, setInfo] = useState(null) 
     const [url, setUrl] = useState("")
     const [postImage, setPostImage] = useState('')
@@ -16,7 +17,7 @@ export const UserContext = createContext({})
     const categories = ['Web Development', 'Linux', 'AI & ML', 'JavaScript', 'HTML5', 'CSS3', 'React', 'Windows', 'Programming']
 
     return (
-        <UserContext.Provider value={{navOpen, setNavOpen, categories, newpostImage, setnewPostImage, postImage, setPostImage, url, setUrl, userInfo, setUserInfo, darkMode, setDarkMode, posts, setPosts, info, setInfo}}>
+        <UserContext.Provider value={{navOpen, backup,setBackup, setNavOpen, categories, newpostImage, setnewPostImage, postImage, setPostImage, url, setUrl, userInfo, setUserInfo, darkMode, setDarkMode, posts, setPosts, info, setInfo}}>
             {children}
         </UserContext.Provider>
     )

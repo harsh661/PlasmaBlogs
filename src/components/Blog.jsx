@@ -8,7 +8,7 @@ import { db } from '../firebase';
 
 const Blog = () => {
 
-  const {darkMode, setPosts, posts} = useContext(UserContext)
+  const {darkMode, setPosts, posts, setBackup} = useContext(UserContext)
 
   const getPosts = async () => {
     let data = []
@@ -19,6 +19,7 @@ const Blog = () => {
     data.unshift(doc.data());
     })
     setPosts(data)
+    setBackup(data)
   }
 
   useEffect(() => {

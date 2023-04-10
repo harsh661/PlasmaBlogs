@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../UserContext'
 import { collection, query, where, getDocs, orderBy } from "firebase/firestore";
 import { db } from '../firebase';
 
 const Categories = () => {
-  const {darkMode, setPosts, posts, categories} = useContext(UserContext)
-  const [backup, setBackup] = useState(posts)
+  const {darkMode, setPosts, backup, categories} = useContext(UserContext)
   const [all, setAll] = useState(true)
   const data = []
 
@@ -19,7 +18,7 @@ const Categories = () => {
     })
     setPosts(data)
   }
-  const getAllPosts = async () => {
+  const getAllPosts = () => {
     setAll(true)
     setPosts(backup)
   }
