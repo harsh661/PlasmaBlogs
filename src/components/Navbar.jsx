@@ -52,9 +52,9 @@ const Navbar = () => {
                 {!darkMode && <HiOutlineMoon size={25}/>}
 
               </button>
-              <Link to={`/details/${userInfo?.displayName}`}>
+              <div onClick={()=>setNavOpen(prev => !prev)}>
                 <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
-              </Link>
+              </div>
               </>
             :
             <>
@@ -71,7 +71,7 @@ const Navbar = () => {
           } 
         </div>
         { (navOpen) && (
-          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border-2'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 responsive-h md:min-h-fit md:justify-between md:items-center md:rounded-lg md:absolute`}>
+          <div className={`${darkMode ? 'bg-darker': 'bg-light-mode md:bg-white md:border-2'} animate-slidein w-4/5 md:w-auto md:animate-slideinSmall absolute md:left-auto left-0 top-0 md:top-16 md:right-0 flex flex-col justify-between p-5 pt-20 md:pt-5 responsive-h md:min-h-fit md:justify-between md:items-center md:rounded-lg md:absolute md:border`}>
               {userInfo ? 
                 <div className='text-dark-text h-full max-w-full text-lg gap-5 flex flex-col justify-between w-80'>
                   <div className={`flex md:flex-col items-center text-lg gap-5 md:gap-2 ${darkMode ? 'text-white': 'text-black'}`}>

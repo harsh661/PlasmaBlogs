@@ -1,6 +1,5 @@
 import React, {useContext, useState} from 'react'
-import {MdAddAPhoto} from 'react-icons/md'
-import {IoMdReverseCamera, IoMdAddCircle, IoMdRemoveCircle} from 'react-icons/io'
+import {IoMdAddCircle, IoMdRemoveCircle} from 'react-icons/io'
 import {BiArrowBack} from 'react-icons/bi'
 import { UserContext } from '../UserContext';
 import { updateProfile } from "firebase/auth";
@@ -70,7 +69,7 @@ const UserInfo = () => {
     return (
         <div className={`${darkMode ? 'bg-dark': 'sm:bg-light-mode'} min-h-body w-screen flex items-center justify-center`}>
             <div className={`${darkMode ? 'bg-darker':'bg-white'} sm:rounded-xl shadow-form flex flex-col items-center pb-5 sm:pb-10 sm:w-[500px] w-full sm:min-h-max min-h-body`}>
-                <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex items-center gap-2 text-xl hover:underline underline-offset-4 pb-5`}>
+                <Link to='/' className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} pt-5 sm:hidden flex items-center gap-2 text-xl hover:underline underline-offset-4 pb-5`}>
                   <BiArrowBack/> Back to Home
                 </Link>
                 <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl font-bold text-center mt-10 mb-5`}>Edit Your Profile</h1>
@@ -84,7 +83,7 @@ const UserInfo = () => {
                         name="name" 
                         id="name" 
                         size={1}
-                        className={`${darkMode?'bg-card text-white':'border-light-mode border-2 text-black'} p-4 text-lg rounded-xl outline-none placeholder:text-sm w-full`} placeholder='What should we call you' 
+                        className={`${darkMode?'bg-card text-white border-light-mode-text border-2':'border-light-mode border-2 text-black'} p-4 text-lg rounded-xl outline-none placeholder:text-sm w-full`} placeholder='What should we call you' 
                         required
                     />
                     </div>
