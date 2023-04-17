@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../firebase';
 import { auth } from '../firebase';
+import { Helmet } from 'react-helmet';
 import Comments from '../components/Comments'
 
 const BlogPage = () => {
@@ -42,14 +43,30 @@ const BlogPage = () => {
     setInfo(null)
     window.scrollTo(0, 0)
     getData()
+    console.log(info)
   }, [])
 
   if(!info) return <Loader/>
 
   return (
     <div className={`${darkMode ? 'bg-dark': ''} min-h-body`}>
+
+      {/* React Helmet for Meta data */}
+      <Helmet>
+        <title>{info?.title}</title>
+        <meta name="description" content={info?.summary} />
+        <meta property='og:description' content={info?.summary}/>
+        <meta property='og:title' content={info?.title}/>
+        <meta property='og:author' content={info?.author?.userName}/>
+        <meta property='og:keywords' content={info?.category}/>
+        <meta name='keywords' content={info?.category}/>
+        <meta name='image' content='https://www.agilitypr.com/wp-content/uploads/2020/02/technology-1-1-980x368.jpg'/>
+        <meta property='og:image' content='https://www.agilitypr.com/wp-content/uploads/2020/02/technology-1-1-980x368.jpg'/>
+        <meta name="author" content={info?.author?.userName} />        
+      </Helmet>
+
       <div className='flex flex-col md:flex-row max-w-4xl mx-auto'>
-        <div onClick={showComment} className=''>
+        <div onClick={showComment}>
           <span className='flex flex-col items-center cursor-pointer text-white bg-accent z-10 rounded-full fixed right-5 p-4 bottom-5'>
             <BiCommentDetail size={25}/>
           </span>
@@ -84,7 +101,7 @@ const BlogPage = () => {
             <div className='w-full'>
                 <img src={info.files}
                 alt="Blog image" 
-                className="max-h-96 w-full object-cover object-center"
+                className="max-h-96 rounded-lg w-full object-cover object-center"
                 />
             </div>
             <div dangerouslySetInnerHTML={{__html: info.content}} className={`${darkMode ? 'content-dark' : 'content'} w-full py-10 flex flex-col justify-start`}/>

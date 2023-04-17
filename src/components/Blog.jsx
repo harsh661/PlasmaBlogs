@@ -25,15 +25,16 @@ const Blog = () => {
   useEffect(() => {
     // get posts
     window.scrollTo(0, 0)
+    console.log(posts[0])
     getPosts()
   }, [])
 
   if(!posts) return <Loader />
 
   return (
-    <div className='max-w-5xl flex flex-col gap-5 items-center p-3 md:p-5 overflow-x-hidden'>
-      {posts?.length > 0 && posts?.map((blog, index) => (
-        <BlogPost {...blog} key={index}/>
+    <div className='max-w-5xl lg:grid lg:grid-cols-2 flex flex-col gap-5 items-center p-3 md:p-5 overflow-x-hidden'>
+      {posts?.length > 0 && posts?.map((blog) => (
+        <BlogPost {...blog} key={blog.id}/>
       ))}
       {posts?.length == 0 && (
         <h1 className={`${darkMode ? ' text-dark-text': ''} text-3xl font-semibold text-center mt-20`}>No Posts yet!</h1>

@@ -14,6 +14,7 @@
     "firebase": "^9.19.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.7.1",
     "react-image-upload": "^3.0.1",
     "react-quill": "^2.0.0",
