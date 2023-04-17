@@ -31,7 +31,7 @@ const Blog = () => {
   if(!posts) return <Loader />
 
   return (
-    <div className='max-w-5xl lg:grid lg:grid-cols-2 flex flex-col gap-5 items-center p-3 md:p-5 overflow-x-hidden'>
+    <div className={`max-w-5xl ${posts?.length !== 0 &&'lg:grid lg:grid-cols-2'} flex flex-col gap-5 items-center p-3 md:p-5 overflow-x-hidden`}>
       {posts?.length > 0 && posts?.map((blog) => (
         <BlogPost {...blog} key={blog.id}/>
       ))}

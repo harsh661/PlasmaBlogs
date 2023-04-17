@@ -20,10 +20,12 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+    if(darkMode) {document.body.style.backgroundColor='#0d1116'}
   
   return (
     <>
-    <div className={`${darkMode ? 'bg-dark': ''} flex flex-col items-center min-h-body pb-20`}>
+    <div className={`${darkMode ? 'bg-dark': 'bg-white'} flex flex-col items-center min-h-body pb-20`}>
       <div className='flex flex-col gap-5 items-center p-5'>
         <h2 className={`${darkMode && 'text-white'} text-3xl`}>Plasma Blogs</h2>
         <div className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} flex justify-center gap-5 text-2xl`}>
