@@ -25,7 +25,6 @@ const Blog = () => {
   useEffect(() => {
     // get posts
     window.scrollTo(0, 0)
-    console.log(posts[0])
     getPosts()
   }, [])
 

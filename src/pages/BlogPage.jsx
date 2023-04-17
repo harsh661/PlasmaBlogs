@@ -43,7 +43,6 @@ const BlogPage = () => {
     setInfo(null)
     window.scrollTo(0, 0)
     getData()
-    console.log(info)
   }, [])
 
   if(!info) return <Loader/>
