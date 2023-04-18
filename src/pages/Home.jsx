@@ -21,7 +21,6 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [])
 
-    if(darkMode) {document.body.style.backgroundColor='#0d1116'}
   
   return (
     <>
