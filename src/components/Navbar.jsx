@@ -51,7 +51,7 @@ const Navbar = () => {
                 </label>
               </div>  
               <div onClick={()=>setNavOpen(prev => !prev)}>
-                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
+                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 hidden md:flex rounded-full object-cover'/>
               </div>
             </>
             :

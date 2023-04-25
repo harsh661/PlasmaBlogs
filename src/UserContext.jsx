@@ -3,10 +3,10 @@ import { createContext, useState } from "react";
 
 export const UserContext = createContext({})
 
- const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches
+//  const isDark = window.matchMedia("(prefers-color-scheme:dark)").matches
  export function UserContextProvider({children}) {
     const [userInfo, setUserInfo] = useState(null)
-    const [darkMode, setDarkMode] = useState(isDark)
+    const [darkMode, setDarkMode] = useState(true)
     const [posts, setPosts] = useState(null)
     const [backup, setBackup] = useState(null)
     const [info, setInfo] = useState(null) 

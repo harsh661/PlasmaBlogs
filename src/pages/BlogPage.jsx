@@ -48,7 +48,7 @@ const BlogPage = () => {
   if(!info) return <Loader/>
 
   return (
-    <div className={`${darkMode ? 'bg-dark': ''} min-h-body`}>
+    <div className={`${darkMode ? 'bg-dark': 'bg-white'} min-h-body`}>
 
       {/* React Helmet for Meta data */}
       <Helmet>
