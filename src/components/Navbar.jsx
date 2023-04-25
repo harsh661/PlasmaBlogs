@@ -43,29 +43,25 @@ const Navbar = () => {
         <div className='flex items-center gap-5 text-white'>
           { userInfo !== null 
              ?
-             <>
-             <button 
-             className={`${darkMode?'text-dark-text':'text-light-mode-text'}`}
-             onClick={() => setDarkMode((mode) => !mode)}
-              >
-                {darkMode && <MdLightMode size={25}/>}
-                {!darkMode && <HiOutlineMoon size={25}/>}
-
-              </button>
+            <>
+              <div class="toggle-switch">
+                <label class="switch-label">
+                  <input onChange={()=>setDarkMode(prev=>!prev)} type="checkbox" class="checkbox"/>
+                  <span class="slider"></span>
+                </label>
+              </div>  
               <div onClick={()=>setNavOpen(prev => !prev)}>
                 <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
               </div>
-              </>
+            </>
             :
             <>
-            <button 
-              className={`${darkMode?'text-dark-text':'text-light-mode-text'}`}
-              onClick={() => setDarkMode((mode) => !mode)}
-            >
-              {!darkMode && <MdLightMode size={25}/>}
-              {darkMode && <MdNightlightRound size={25}/>}
-
-            </button>
+            <div class="toggle-switch">
+              <label class="switch-label">
+                <input onChange={()=>setDarkMode(prev=>!prev)} type="checkbox" class="checkbox"/>
+                <span class="slider"></span>
+              </label>
+            </div>  
             <Link to='/login' className='text-accent px-3 border py-1 rounded-md border-accent font-semibold cursor-pointer' onClick={()=>setNavOpen(false)}>Login</Link>
             </>
           } 
