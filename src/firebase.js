@@ -5,18 +5,17 @@ import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
 
-  apiKey: "AIzaSyA8zjXOEk0O3OOWvgJ2_AH_0i32vQIHpcQ",
+  apiKey: import.meta.env.VITE_REACT_API_KEY,
 
-  authDomain: "plasma-blogs.firebaseapp.com",
+  authDomain: import.meta.env.VITE_REACT_AUTH_DOMAIN,
 
-  projectId: "plasma-blogs",
+  projectId: import.meta.env.VITE_REACT_PROJECT_ID,
 
-  storageBucket: "plasma-blogs.appspot.com",
+  storageBucket: import.meta.env.VITE_REACT_STORAGE_BUCKET,
 
-  messagingSenderId: "847393992455",
+  messagingSenderId: import.meta.env.VITE_REACT_SENDER_ID,
 
-  appId: "1:847393992455:web:6d465f7e76042e0503dfa2"
-
+  appId: import.meta.env.VITE_REACT_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
