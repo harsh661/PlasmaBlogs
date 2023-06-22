@@ -12,8 +12,8 @@ const BlogPost = ({id, title, summary, files:cover, author, timestamp}) => {
   return (
     <div
       className={`${
-        darkMode ? "md:bg-card" : "md:bg-light-mode"
-      } flex flex-col p-2 mt-5 md:rounded-lg gap-3 md:gap-5 w-full animate-slideUp md:shadow-md`}
+        darkMode ? "md:bg-darker border-border" : "md:bg-light-mode border-border-light"
+      } flex flex-col p-2 mt-5 rounded-lg gap-3 md:gap-5 w-full animate-slideUp md:shadow-md border`}
     >
       <div className="flex-[2]">
         <Link to={`/post/${id}`}>

@@ -28,7 +28,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className={`${darkMode ? 'bg-dark': 'bg-white'} z-50 px-5 flex items-center justify-center sticky top-0`}>
+    <nav className={`${darkMode ? 'bg-dark border-border': 'bg-white border-border-light'} z-50 px-5 flex items-center justify-center sticky top-0 border-b`}>
       <div className='h-[60px] md:relative w-full flex items-center justify-between max-w-6xl'>
         <Link to='/' className='hidden md:flex'>
           <img className='w-24' src={darkMode ? '/logo-dark.png' : '/logo.png'} alt="" />
@@ -50,8 +50,8 @@ const Navbar = () => {
                   <span class="slider"></span>
                 </label>
               </div>  
-              <div onClick={()=>setNavOpen(prev => !prev)}>
-                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 hidden md:flex rounded-full object-cover'/>
+              <div className='hidden md:flex' onClick={()=>setNavOpen(prev => !prev)}>
+                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
               </div>
             </>
             :

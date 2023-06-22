@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --dark-text: #abafb2;
+  --light-text: #65676B;
+  --heading-text: #fff;
+}
 
 body {
     font-family: 'Roboto',sans-serif;
@@ -70,29 +75,29 @@ input {
 }
 
 .content-dark h1{
-    color: white;
+    color: var(--heading-text);
     font-size: 30px;
     padding: 10px 0;
 }
 .content-dark h2{
-    color: white;
+    color: var(--heading-text);
     font-size: 24px;
     padding: 10px 0;
 }
 .content-dark p{
-    color: #94A3B8;    
+    color: var(--dark-text);    
     font-size: 18px;
     padding: 10px 0;
 }
 .content-dark ul{
   list-style: disc;
   font-size: 18px;
-  color: #94A3B8;
+  color: var(--dark-text);
   padding-left: 10px;
 }
 .content-dark a{
   text-decoration: underline;
-  color: white;
+  color: var(--heading-text);
 }
 .content-dark blockquote{
   font-family: 'Fira-Code', monospace;
@@ -100,7 +105,7 @@ input {
   background: black;
   padding: 10px 20px;
   border-left: 3px solid #fb6300;
-  color: white;
+  color: var(--heading-text);
 }
 
 /* Loader CSS */
@@ -235,3 +240,4 @@ input {
     box-shadow: none;
   }
   
+

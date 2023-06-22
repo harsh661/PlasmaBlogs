@@ -33,7 +33,7 @@ const Categories = () => {
                     name='radio' 
                     className={`hidden`}
                     />
-                    <span className={`checkmark whitespace-nowrap py-2 px-5 rounded-full ${darkMode?'bg-light text-dark-text': 'bg-light-mode'}`}>All</span>
+                    <span className={`checkmark whitespace-nowrap py-2 px-5 rounded-full ${darkMode?'bg-darker text-dark-text': 'bg-light-mode'}`}>All</span>
                 </label>
                 {categories.map((category, i) => (
                 <label key={i} className="container w-full h-full">
@@ -44,7 +44,7 @@ const Categories = () => {
                     value={category}
                     className={`hidden`}
                     />
-                    <span className={`checkmark whitespace-nowrap py-2 px-3 rounded-full ${darkMode?'bg-light text-dark-text': 'bg-light-mode'}`}>{category}</span>
+                    <span className={`checkmark whitespace-nowrap py-2 px-3 rounded-full ${darkMode?'bg-darker text-dark-text': 'bg-light-mode'}`}>{category}</span>
                 </label>
             ))}
         </div>

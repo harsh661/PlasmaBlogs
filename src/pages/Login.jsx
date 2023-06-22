@@ -77,7 +77,7 @@ const Login = () => {
 
   return (
     <div className={`${darkMode ? 'bg-dark': 'sm:bg-light-mode'} min-h-body w-screen flex items-center justify-center`}>
-      <div className={`${darkMode ? 'bg-darker':'bg-white'} sm:rounded-xl shadow-form flex flex-col items-center py-5 pb-5 sm:pb-10 sm:w-[500px] w-full sm:min-h-max responsive-h`}>
+      <div className={`sm:rounded-xl shadow-form flex flex-col items-center py-5 pb-5 sm:pb-10 sm:w-[500px] w-full sm:min-h-max responsive-h`}>
           <h1 className={`${darkMode ? ' text-white': ''} text-2xl md:text-3xl px-5 font-bold text-center mt-10 mb-5`}>Login to PlasmaBlogs</h1>
           <span className={`p-2 ${err?'text-red':'text-gray-500'} text-sm`}>{err?errorMessage.split('(')[1].replace(')', ''): 'Please sign in to your account'}</span>
           <div className='flex flex-col sm:px-16 px-10 pb-5 pt-5 flex-1 w-full justify-between'>
