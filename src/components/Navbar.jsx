@@ -47,7 +47,10 @@ const Navbar = () => {
                 <img src={userInfo?.photoURL} alt="User" className='w-8 h-8 md:w-10 md:h-10 rounded-full object-cover'/>
               </div>
             :
+            <>
+            <span onClick={()=>setDarkMode(p=>!p)} className={`${darkMode?'text-dark-text': 'text-light-mode-text'} cursor-pointer text-xl`}>{darkMode?<MdNightlightRound/>:<MdLightMode/>}</span>
             <Link to='/login' className='text-accent px-3 border py-1 rounded-md border-accent font-semibold cursor-pointer' onClick={()=>setNavOpen(false)}>Login</Link>
+            </>
           } 
         </div>
         { (navOpen) && (
