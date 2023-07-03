@@ -31,7 +31,7 @@ const Navbar = () => {
     <nav className={`${darkMode ? 'bg-dark border-border': 'bg-white border-border-light'} z-50 px-5 flex items-center justify-center sticky top-0 border-b`}>
       <div className='h-[60px] md:relative w-full flex items-center justify-between max-w-6xl'>
         <Link to='/' className='hidden md:flex'>
-          <img className='w-24' src={darkMode ? '/logo-dark.png' : '/logo.png'} alt="" />
+          <img className='w-24' src={darkMode ? '/logo-dark.png' : '/logo.png'} alt="Harsh" />
         </Link>
         <div onClick={() => setNavOpen(prev => !prev)} className={`${darkMode && 'text-dark-text'} ${navOpen && 'hidden'} md:hidden text-3xl z-50`}>
           <HiOutlineMenuAlt1 />
@@ -43,27 +43,11 @@ const Navbar = () => {
         <div className='flex items-center gap-5 text-white'>
           { userInfo !== null 
              ?
-            <>
-              <div class="toggle-switch">
-                <label class="switch-label">
-                  <input onChange={()=>setDarkMode(prev=>!prev)} type="checkbox" class="checkbox"/>
-                  <span class="slider"></span>
-                </label>
-              </div>  
-              <div className='hidden md:flex' onClick={()=>setNavOpen(prev => !prev)}>
-                <img src={userInfo?.photoURL} alt="User" className='w-10 h-10 rounded-full object-cover'/>
+              <div onClick={()=>setNavOpen(prev => !prev)}>
+                <img src={userInfo?.photoURL} alt="User" className='w-8 h-8 md:w-10 md:h-10 rounded-full object-cover'/>
               </div>
-            </>
             :
-            <>
-            <div class="toggle-switch">
-              <label class="switch-label">
-                <input onChange={()=>setDarkMode(prev=>!prev)} type="checkbox" class="checkbox"/>
-                <span class="slider"></span>
-              </label>
-            </div>  
             <Link to='/login' className='text-accent px-3 border py-1 rounded-md border-accent font-semibold cursor-pointer' onClick={()=>setNavOpen(false)}>Login</Link>
-            </>
           } 
         </div>
         { (navOpen) && (
@@ -84,8 +68,10 @@ const Navbar = () => {
                   <div className={`${darkMode ? 'text-dark-text': 'text-light-mode-text'} h-full flex flex-col pl-5 md:pl-2 pt-10 md:pt-0 gap-5`}>
                       <Link onClick={() => setNavOpen(false)} to={`/${userInfo.displayName}/posts`} className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><MdOutlineFeed/>Your Posts</Link>
                       <span className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}><HiOutlineBookmark/>Bookmarks</span>
+                      <span onClick={()=>setDarkMode(p=>!p)} className={`flex items-center gap-2 cursor-pointer ${darkMode?'hover:text-white':'hover:text-black'}`}>{darkMode?<MdNightlightRound/>:<MdLightMode/>}Change Theme</span>
                   </div>
-                  <div onClick={logout} className={`cursor-pointer flex items-center gap-5 text-red pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
+                  
+                  <div onClick={logout} className={`cursor-pointer flex items-center gap-5 text-red pt-5 pb-10 md:pb-5 border-t text-red-500 ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>
                     <div><MdLogout size={25}/></div>
                     Logout
                   </div>
@@ -93,7 +79,6 @@ const Navbar = () => {
                 :
                 <div className='flex flex-col h-full text-xl gap-5 justify-between'>
                   <div className={`flex items-center gap-3 ${darkMode ? 'text-dark-text text-xl': 'text-black text-xl'}`}>
-                    <span><FaRegUserCircle size={30}/></span>
                     <p>Not signed in</p>
                   </div>
                   <Link to='/login' onClick={()=>setNavOpen(prev => !prev)} className={`cursor-pointer flex items-center gap-5 text-accent pt-5 pb-10 md:pb-5 border-t ${darkMode ? 'border-dark-text': 'border-light-mode-text'}`}>

@@ -13,7 +13,7 @@ const BlogPost = ({id, title, summary, files:cover, author, timestamp}) => {
     <div
       className={`${
         darkMode ? "md:bg-darker border-border" : "md:bg-light-mode border-border-light"
-      } flex flex-col p-2 mt-5 rounded-lg gap-3 md:gap-5 w-full animate-slideUp md:shadow-md border`}
+      } flex flex-col p-2 mt-5 rounded-lg gap-3 md:gap-5 w-full animate-slideUp md:shadow-md md:border`}
     >
       <div className="flex-[2]">
         <Link to={`/post/${id}`}>
