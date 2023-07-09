@@ -24,8 +24,8 @@ const Categories = () => {
   }
 
   return (
-    <div id='categories' className='w-full py-2 overflow-x-scroll'>
-        <div className={`flex items-center md:max-w-[984px] overflow-scroll p-2 gap-3 lg:mx-auto mx-5`}>
+    <div id='categories' className='w-full pt-5 overflow-x-scroll'>
+        <div className={`flex items-center md:max-w-6xl overflow-scroll p-2 gap-3 lg:mx-auto mx-5`}>
                 <label className="container">
                     <input
                     type="radio" 
